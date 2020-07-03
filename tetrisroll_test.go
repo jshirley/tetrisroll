@@ -6,13 +6,13 @@ import (
 	"testing"
 )
 
-func TestGlueSet(t *testing.T) {
+func TestTetrisRoll(t *testing.T) {
 	keys := []string{"Hello", "Item", "Another key", "One more", "🤔"}
-	set1 := NewGlueSet(keys)
-	set2 := NewGlueSet(keys)
+	set1 := NewTetrisRoll(keys)
+	set2 := NewTetrisRoll(keys)
 
 	if bytes.Equal(set1.Key(), set2.Key()) != true {
-		t.Errorf("NewGlueSet(%q).Key() != NewGlueSet(%q).Key() != %q", keys, keys, set1.Key())
+		t.Errorf("NewTetrisRoll(%q).Key() != NewTetrisRoll(%q).Key() != %q", keys, keys, set1.Key())
 	}
 
 	for cycles := 0; cycles < 10; cycles++ {

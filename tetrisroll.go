@@ -8,24 +8,24 @@ import (
 	"time"
 )
 
-type GlueSetItem struct {
+type SetItem struct {
 	Key   string
 	Count int
 }
 
-type GlueSet struct {
-	items []*GlueSetItem
+type TetrisRollSet struct {
+	items []*SetItem
 	key   []byte
 	count int
 }
 
-func NewGlueSet(keys []string) *GlueSet {
-	items := make([]*GlueSetItem, len(keys))
+func NewTetrisRoll(keys []string) *TetrisRollSet {
+	items := make([]*SetItem, len(keys))
 	var persistentKey bytes.Buffer
 
 	sort.Strings(keys)
 	for index, key := range keys {
-		items[index] = &GlueSetItem{
+		items[index] = &SetItem{
 			Key:   key,
 			Count: 0,
 		}
@@ -36,33 +36,33 @@ func NewGlueSet(keys []string) *GlueSet {
 
 	rand.Seed(time.Now().UnixNano())
 
-	return &GlueSet{
+	return &TetrisRollSet{
 		key:   key[:],
 		count: 0,
 		items: items,
 	}
 }
 
-func (gs *GlueSet) Key() []byte {
-	return gs.key
+func (tr *TetrisRollSet) Key() []byte {
+	return tr.key
 }
 
-func (gs *GlueSet) Count() int {
-	return gs.count
+func (tr *TetrisRollSet) Count() int {
+	return tr.count
 }
 
-func (gs *GlueSet) Roll() string {
-	available := []*GlueSetItem{}
+func (tr *TetrisRollSet) Roll() string {
+	available := []*SetItem{}
 
-	for _, item := range gs.items {
-		if item.Count == gs.count {
+	for _, item := range tr.items {
+		if item.Count == tr.count {
 			available = append(available, item)
 		}
 	}
 	// We didn't find anything, need to roll again!
 	if len(available) == 0 {
-		gs.count++
-		return gs.Roll()
+		tr.count++
+		return tr.Roll()
 	}
 
 	picked := rand.Intn(len(available))

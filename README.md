@@ -3,9 +3,8 @@
 A tetris-style randomizer for rolling through sets of keys, to ensure more equitable distribution.
 
 ```
-NewGlue
-	keys := []string{"Brawne", "Sol", "Martin", "Fedmahn", "Het", "Meina"}
-	roller := New TetrisRoll(keys)
+  keys := []string{"Brawne", "Sol", "Martin", "Fedmahn", "Het", "Meina"}
+  roller := New TetrisRoll(keys)
 
   // Must iterate through each key before you get a new set!
   key := roller.Roll()

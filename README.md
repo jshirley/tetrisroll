@@ -1,5 +1,7 @@
 # tetrisroll
 
+[![Build Status](https://travis-ci.com/jshirley/tetrisroll.svg?branch=master)](https://travis-ci.com/jshirley/tetrisroll)
+
 A tetris-style randomizer for rolling through sets of keys, to ensure more equitable distribution.
 
 ```
@@ -41,3 +43,4 @@ and persist how we can more equitably distribute glue work.
 
 I will likely hook this up to a Slack slash command, and if there is interest will try to make that an open source
 library as well!
+

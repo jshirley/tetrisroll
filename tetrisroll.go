@@ -9,14 +9,14 @@ import (
 )
 
 type SetItem struct {
-	Key   string
-	Count int
+	Key   string `json:"key" bson:"key"`
+	Count int    `json:"count" bson:"count"`
 }
 
 type TetrisRollSet struct {
-	items []*SetItem
-	key   []byte
-	count int
+	items []*SetItem `json:"items" bson:"items"`
+	key   []byte     `json:"key" bson:"_id"`
+	count int        `json:"count" bson:"count"`
 }
 
 func NewTetrisRoll(keys []string) *TetrisRollSet {
